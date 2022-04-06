@@ -4,8 +4,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="level4.css">
 </head>
 <body>
-    
+    <div class="world">
+        <div class="zombie zombie-left"></div>
+        <div class="zombie zombie-right"></div>
+        <div class="character"></div>
+
+
+        <div class="arrow arrow-left"></div>
+        <div class="arrow arrow-right"></div>
+    </div>
+    <script>
+        let direction = 1
+        const speed = 1
+        let chLeft = 50
+
+        let moving = false
+        const chEl = document.querySelector('.character')
+        // Interval that manages all the movements of the game
+        setInterval(() => {
+            // moving checks if the character is moving
+            if (moving){
+                console.log(chEl.style.left)
+                chLeft =  chLeft+(speed*direction)
+                chEl.style.left = chLeft+"%"
+            }
+            // arrowLeft will check the arrrowLeft
+            if (arrowLeft){
+                // check collision
+                    // if (itHits){
+                        // check charcter side
+                        // if side is left
+                            // die
+                        //else
+                            //put the arrow back
+
+                //}
+                if (collide(chEl, leftArrowEl)){
+                    if (direction === 1){
+                        alert("die")
+                    }
+                    leftArrowEl.classList.remove('going')
+                    arrowLeft = false;
+                }
+
+            }else{
+                const rnd = Math.random() 
+                if (rnd < 0.02){
+                    shootArrow(leftArrowEl)
+                    arrowLeft = true;
+                }
+            }
+            if (arrowRight){
+                if (collide(chEl, rightArrowEl)){
+                    console.log('colliging')
+                    if (direction === -1){
+                        alert("die")
+                    }
+                    rightArrowEl.classList.remove('going')
+                    arrowRight = false;
+                }else{
+                    console.log('not colliging')
+                }
+            }else{      
+                const rnd = Math.random() 
+                if (rnd < 0.02) {
+                    shootArrow(rightArrowEl)
+                    arrowRight = true;
+                }
+            }
+        },50)
+
+        window.onkeydown = (e) => {
+            console.log(e.key)
+            if (e.key === "ArrowLeft"){
+                direction = -1
+                moving = true
+                chEl.classList.remove('right')
+                chEl.classList.add('left')
+                chEl.classList.add('walk')
+            }
+            if (e.key === "ArrowRight"){
+                direction = 1
+                moving = true
+                chEl.classList.remove('left')
+                chEl.classList.add('right')
+                chEl.classList.add('walk')
+            }
+        }
+
+        window.onkeyup = (e) => {
+            console.log(e.key)
+            if (e.key === "ArrowLeft"){
+                moving = false
+                chEl.classList.remove('walk')
+
+            }
+            if (e.key === "ArrowRight"){
+                moving = false
+                chEl.classList.remove('walk')
+            }
+        }
+
+
+        let arrowLeft = false;
+        let arrowRight = false;
+        const rightArrowEl = document.querySelector('.arrow-right')
+        const leftArrowEl = document.querySelector('.arrow-left')
+        const shootArrow = (arrow) => {
+            arrow.classList.add('going')
+
+        }
+
+        function collide(a, b) {
+            var aRect = a.getBoundingClientRect();
+            var bRect = b.getBoundingClientRect();
+
+            return !(
+                ((aRect.top + aRect.height) < (bRect.top)) ||
+                (aRect.top > (bRect.top + bRect.height)) ||
+                ((aRect.left + aRect.width) < bRect.left) ||
+                (aRect.left > (bRect.left + bRect.width))
+            );
+        }
+    </script>
 </body>
 </html>

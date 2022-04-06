@@ -1,0 +1,116 @@
+body{
+  margin: 0;
+  min-height: 100vh;
+}
+.world{
+  background-size: cover;
+  min-height: 100vh;
+  background-image:url(landscape_tanks.jpg);
+  background-repeat: no-repeat;
+}
+.character{
+  bottom: 23vh;
+  width: 80px;
+  left: 50%;
+  /* background-color: red; */
+  height: 125px;
+  position: absolute;
+  background-size: calc(80 * 4px);
+  background-image:url(maleCharacter1.png);
+}
+
+
+.zombie{
+  bottom: 23vh;
+  width: 80px;
+  /* background-color: red; */
+  height: 125px;
+  position: absolute;
+  background-size: calc(80 * 4px);
+  background-image:url(zombie.png);
+}
+.zombie-left{
+  left:10%;
+}
+.zombie-right{
+  right:10%;
+}
+
+
+
+.arrow{
+  bottom: 23vh;
+  width: 80px;
+  /* background-color: red; */
+  height: 125px;
+  position: absolute;
+  background-size: cover;
+  background-image:url(arow.png);
+  display: none;
+}
+.arrow-left.going{
+  display: block;
+  animation: arrowAnim 10s linear forwards;
+}
+.arrow-right.going{
+  display: block;
+  animation: arrowAnimRight 10s linear forwards;
+}
+
+.arrow-right{
+  transform: scaleX(-1);
+}
+@keyframes arrowAnim {
+  0%{
+    left: 10%;
+  }
+  100%{
+    left: 90%;
+  }
+}
+@keyframes arrowAnimRight {
+  0%{
+    right: 10%;
+  }
+  100%{
+    right: 90%;
+  }
+}
+
+.walk{
+  animation: walkAnimation .5s linear infinite;
+}
+.left{
+  transform: scaleX(-1);
+  border-right: 10px solid red;
+}
+.right{
+  border-right: 10px solid red;
+}
+
+@keyframes walkAnimation{
+  0%,16.9%,100%{
+    /* background-position: 0; */
+    background-position: -240px -125px;
+  }
+  17%,32.9%{
+    background-position: -240px -125px;
+  }
+  33%,48.9%{
+    background-position: -0px -250px;
+  }
+  49%,60.9%{
+    background-position: -80px -250px;
+  }
+  61%,76.9%{
+    background-position: -160px -250px;
+  }
+  77%,99.9%{
+    background-position: -240px -250px;
+  }
+  /* 60%,69%{}
+  70%,79%{}
+  80%,89%{} */
+
+  
+}
