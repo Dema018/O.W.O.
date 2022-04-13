@@ -38,15 +38,15 @@ body{
 
 
 
-.arrow{
+.arow{
   bottom: 23vh;
   width: 80px;
-  /* background-color: red; */
+  background-color: red;
   height: 125px;
   position: absolute;
   background-size: cover;
   background-image:url(arow.png);
-  display: none;
+  /* display: none; */
 }
 .arrow-left.going{
   display: block;
