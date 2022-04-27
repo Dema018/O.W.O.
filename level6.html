@@ -11,10 +11,10 @@
     <div class="container">
         <div class="row">
           <div class="col-4">
-            <img src="door1.png" class="img-fluid" onclick="die()" id="die" alt="">
+            <img src="door1.png" class="img-fluid" onclick="live()" id="die" alt="">
           </div>
           <div class="col-4">
-            <img src="door1.png" class="img-fluid" onclick="live()" id="live" alt="">
+            <img src="door1.png" class="img-fluid" onclick="die()" id="live" alt="">
           </div>
           <div class="col-4">
             <img src="door1.png" class="img-fluid" onclick="die()" id="die" alt="">
@@ -26,6 +26,7 @@
       alert("select the right door")
       function live() {
       alert("you are lucky")
+      location.href="./level7.html"
       }
       function die() {
       alert("i knew you aint going to make it")
